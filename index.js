@@ -10,12 +10,12 @@ const defaultConfig = {
   textTransformer: text => text
 }
 
-export function renderHtml (html, config, createElement, context) {
+export function renderHtml (html, config, h) {
   const _c = Object.assign(defaultConfig, config)
   const _ast = generateAST(html)
   const _rectifiedAst = rectifyAST(_ast, config)
 
-  return renderer(_rectifiedAst, _c, createElement, context)
+  return renderer(_rectifiedAst, _c, h)
 }
 
 export { getOptionsFromNode } from "./src/helpers"
