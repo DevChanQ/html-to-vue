@@ -31,7 +31,6 @@ export function renderer (ast, config, h) {
         // if it's an extra component use custom renderer
         if (typeof config.config.extraComponentsMap[node.name] !== 'undefined') {
           const comp = config.config.extraComponentsMap[node.name];
-          console.log(comp);
           return h(
             comp,
             getOptionsFromNode(node),
@@ -48,5 +47,5 @@ export function renderer (ast, config, h) {
     }
   }
 
-    return () => h("div", {}, _render(ast, null, null, 0))
+  return () => h("div", {}, _render(ast, null, null, 0))
 }

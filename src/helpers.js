@@ -13,14 +13,5 @@ export function cloneDeep (obj) {
  * @returns {{style: String, class: String, attrs: Object}}
  */
 export function getOptionsFromNode(node) {
-  let attrs = cloneDeep(node.attrs)
-  const c = node.attrs?.class
-  const style = node.attrs?.style
-  delete attrs.style
-  delete attrs.class
-  return {
-    style,
-    attrs,
-    class: c
-  }
+  return cloneDeep(node.attrs);
 }
