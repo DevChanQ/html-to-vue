@@ -1,15 +1,15 @@
 {
-  "name": "html-to-vue",
-  "version": "1.4.0",
+  "name": "html-to-vue3",
+  "version": "0.1.0",
   "description": "Converts HTML to Vue render functions, while giving the ability to swap out certain HTML nodes with Vue Components",
   "source": "index.js",
   "main": "dist/index.js",
   "module": "dist/module.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HCESrl/html-to-vue"
+    "url": "https://github.com/DevChanQ/html-to-vue"
   },
-  "homepage": "https://github.com/HCESrl/html-to-vue",
+  "homepage": "https://github.com/DevChanQ/html-to-vue",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel watch",
@@ -23,15 +23,15 @@
     "function",
     "convert"
   ],
-  "author": "mrigoni@hce.it",
+  "author": "jeffrey@devjeff.info",
   "license": "MIT",
   "dependencies": {
-    "html-parse-stringify2": "^2.0.1",
-    "parcel": "^2.13.0"
+    "html-parse-stringify2": "^2.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
-    "vue": "^3.4.29"
+    "vue": "^3.4.29",
+    "parcel": "^2.13.0"
   }
 }
