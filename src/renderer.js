@@ -8,8 +8,8 @@ import { getOptionsFromNode } from "./helpers";
  * @param {*} createElement vue's createElement
  * @param {*} context vue functional component context
  */
-export function renderer (ast, config, h) {
-  function _render(node, parent, key, index) {
+export const renderer = (ast, config, h) => {
+  const _render = (node, parent, key, index) => {
     if (Array.isArray(node)) {
       const nodes = []
       // node is an array
@@ -30,13 +30,15 @@ export function renderer (ast, config, h) {
 
         // if it's an extra component use custom renderer
         if (typeof config.config.extraComponentsMap[node.name] !== 'undefined') {
-          const comp = config.config.extraComponentsMap[node.name];
+          const Component = config.config.extraComponentsMap[node.name];
+
           return h(
-            comp,
+            Component,
             getOptionsFromNode(node),
-            [...children]
+            () => [...children]
           )
         }
+
         // else, create normal html element
         return h(
           node.name,
@@ -47,5 +49,5 @@ export function renderer (ast, config, h) {
     }
   }
 
-  return () => h("div", {}, _render(ast, null, null, 0))
+  return h("div", {}, _render(ast, null, null, 0))
 }

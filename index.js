@@ -10,7 +10,7 @@ const defaultConfig = {
   textTransformer: text => text
 }
 
-export function renderHtml (html, config, h) {
+export const renderHtml = (html, config, h) => {
   const _c = Object.assign(defaultConfig, config)
   const _ast = generateAST(html)
   const _rectifiedAst = rectifyAST(_ast, config)
