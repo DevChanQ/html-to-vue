@@ -8,7 +8,7 @@ import { getOptionsFromNode } from "./helpers";
  * @param {*} createElement vue's createElement
  * @param {*} context vue functional component context
  */
-export const renderer = (ast, config, h) => {
+export const renderer = (ast, config, h, attrs) => {
   const _render = (node, parent, key, index) => {
     if (Array.isArray(node)) {
       const nodes = []
@@ -33,10 +33,12 @@ export const renderer = (ast, config, h) => {
         const tagName = node.name.toLowerCase();
         if (typeof config.extraComponentsMap[tagName] !== 'undefined') {
           const Component = config.extraComponentsMap[tagName];
-
           return h(
             Component,
-            getOptionsFromNode(node),
+            {
+              ...getOptionsFromNode(node),
+              ...attrs, // pass down attributes
+            },
             () => [...children]
           )
         }

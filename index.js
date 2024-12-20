@@ -4,6 +4,8 @@ import { generateAST } from "./src/ast";
 import { renderer } from "./src/renderer";
 // import { version } from './package.json';
 
+// console.log("version", version)
+
 const defaultConfig = {
   container: {
     type: 'div'
@@ -13,7 +15,7 @@ const defaultConfig = {
   textTransformer: text => text
 }
 
-export const renderHtml = (html, c, h) => {
+export const renderHtml = (html, c, h, attrs) => {
   const config = { ...(c ?? {}) }
 
   // convert component names to lower case
@@ -38,7 +40,7 @@ export const renderHtml = (html, c, h) => {
   const _c = Object.assign(defaultConfig, config)
   const _ast = generateAST(sanitizedHtml)
 
-  return renderer(_ast, _c, h)
+  return renderer(_ast, _c, h, attrs ?? {})
 }
 
 export { getOptionsFromNode } from "./src/helpers"
