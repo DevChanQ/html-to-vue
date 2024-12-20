@@ -1,4 +1,3 @@
-import { cloneDeep } from "./helpers";
 const parser = require('html-parse-stringify2')
 
 /**
@@ -42,25 +41,4 @@ export function isNode(node) {
 
 export function generateAST (html) {
   return parser.parse(html)
-}
-
-/**
- * Converts ast html nodes in vue components
- * @param ast
- * @param config
- * @returns {*}
- */
-export function rectifyAST (ast, config) {
-  const _ast = cloneDeep(ast)
-  const keys = config.extraComponentsMap ? Object.keys(config.extraComponentsMap) : [];
-  _visitAST(_ast, (node, parent, key, index) => {
-    // checking whether the AST has some components that has to become Vue Components
-    for (let i = 0; i < keys.length; i++) {
-      const currentKey = keys[i]
-      if (config.extraComponentsMap[currentKey].conditions(node)) {
-        node.name = currentKey
-      }
-    }
-  })
-  return _ast
 }

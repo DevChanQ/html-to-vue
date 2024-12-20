@@ -1,6 +1,6 @@
 {
   "name": "html-to-vue3",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Converts HTML to Vue render functions, while giving the ability to swap out certain HTML nodes with Vue Components",
   "source": "index.js",
   "main": "dist/index.js",
@@ -26,12 +26,13 @@
   "author": "jeffrey@devjeff.info",
   "license": "MIT",
   "dependencies": {
-    "html-parse-stringify2": "^2.0.1"
+    "html-parse-stringify2": "^2.0.1",
+    "sanitize-html": "^2.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
-    "vue": "^3.4.29",
-    "parcel": "^2.13.0"
+    "parcel": "^2.13.0",
+    "vue": "^3.4.29"
   }
 }

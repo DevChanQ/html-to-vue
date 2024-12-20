@@ -22,15 +22,17 @@ export const renderer = (ast, config, h) => {
       if (node.type === 'text') {
         return config.textTransformer(node.content) // return text
       }
+
       if (node.type === 'tag') {
         const children = []
         node.children.forEach((child, index) => {
           children.push(_render(child, node, null, index))
         })
 
-        // if it's an extra component use custom renderer
-        if (typeof config.config.extraComponentsMap[node.name] !== 'undefined') {
-          const Component = config.config.extraComponentsMap[node.name];
+        // if tag name is provided in extraComponentsMap, use that component
+        const tagName = node.name.toLowerCase();
+        if (typeof config.extraComponentsMap[tagName] !== 'undefined') {
+          const Component = config.extraComponentsMap[tagName];
 
           return h(
             Component,
@@ -41,7 +43,7 @@ export const renderer = (ast, config, h) => {
 
         // else, create normal html element
         return h(
-          node.name,
+          tagName,
           getOptionsFromNode(node),
           [...children]
         )
